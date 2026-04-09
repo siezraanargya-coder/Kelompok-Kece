@@ -2,102 +2,190 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Kelompok 9-Kelompok Kece</title>
+    <title>Proyek Saya</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #333;
+        }
+
+        h1 {
             text-align: center;
+            color: white;
+            padding: 20px;
         }
 
         nav {
-            margin: 20px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         button {
-            padding: 10px 15px;
+            padding: 10px 18px;
             margin: 5px;
             border: none;
-            background-color: blue;
-            color: white;
-            border-radius: 5px;
+            background-color: white;
+            color: #2a5298;
+            border-radius: 20px;
             cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         button:hover {
-            background-color: darkblue;
+            background-color: #2a5298;
+            color: white;
         }
 
-        #content {
-            margin-top: 20px;
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .card h2 {
+            color: #2a5298;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .member {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        iframe {
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
         }
     </style>
 </head>
 
 <body>
 
-    <h1 style="color:black;">Kelompok Kece</h1>
+    <h1>Judul Proyek Kamu</h1>
 
-    <!-- Tombol Navigasi -->
+    <!-- NAV -->
     <nav>
         <button onclick="showContent('home')">Home</button>
         <button onclick="showContent('design')">Design</button>
         <button onclick="showContent('about')">About</button>
     </nav>
 
-    <!-- Konten -->
-    <div id="content">
-        <p>Klik salah satu tombol di atas untuk melihat isi.</p>
+    <!-- CONTENT -->
+    <div class="container" id="content">
+
+        <div class="card">
+            <h2>Deskripsi Proyek</h2>
+            <p>
+                <!-- ISI DI SINI -->
+                Tuliskan deskripsi singkat tentang proyek kamu di sini.
+            </p>
+        </div>
+
     </div>
 
-    <!-- JavaScript -->
     <script>
         function showContent(menu) {
-            let text = "";
+
+            let content = "";
 
             if (menu === "home") {
-                text = `
+                content = `
+                <div class="card">
+                    <h2>Deskripsi Proyek</h2>
                     <p>
-                    Halo teman-teman 👋
-                    
-                    Kelompok 9 atau Kelompok Kece berencana membuat sebuah proyek yang bertujuan untuk mengembangkan kreativitas sekaligus melatih kerja sama tim.
-                    Dalam prosesnya, setiap anggota memiliki peran masing-masing agar proyek dapat berjalan dengan baik dan terorganisir.
-                    Mereka mulai dari tahap perencanaan, pembagian tugas, hingga pelaksanaan dengan penuh tanggung jawab.
-                    Izinkan kami memperkenalkan anggota Kelompok Kece :
-                    1. Ezra Anargya Sipayung
-                    2. Ezra Putra Sihaloho
-                    3. Jonathan Brandon Warokka
-                    4. Steven Twen Van Dez
-                    
-                    Dengan semangat kebersamaan, Kelompok 9 berharap proyek yang mereka buat tidak hanya berhasil, tetapi juga memberikan manfaat serta pengalaman berharga bagi semua anggotanya.
-                    Terimakasih 🙏
+                        <!-- GANTI INI -->
+                        Jelaskan tujuan proyek kamu, latar belakang, atau ide utama di sini.
                     </p>
-                `;
-            } 
-            else if (menu === "design") {
-                text = `
-                    <p>
-                    Coming soon guys
-                    </p>
-                `;
-            } 
-            else if (menu === "about") {
-                text = `
-                    <p>Pengenalan kelompok kami (Masih progres guys):</p>
-
-                    <p>
-                        Canva tidak bisa ditampilkan langsung di website ini.<br>
-                        Silakan buka melalui tombol berikut:
-                    </p>
-
-                    <a href="https://canva.link/8hyzfspodb67crg" target="_blank"
-                       style="padding:10px; background:blue; color:white; text-decoration:none; border-radius:5px;">
-                       Buka Canva
-                    </a>
+                </div>
                 `;
             }
 
-            document.getElementById("content").innerHTML = text;
+            else if (menu === "design") {
+                content = `
+                <div class="card">
+                    <h2>Konsep & Desain</h2>
+                    <p>
+                        <!-- GANTI INI -->
+                        Jelaskan bagaimana desain proyek kamu dibuat, warna yang digunakan, 
+                        serta alasan pemilihan tampilan.
+                    </p>
+                </div>
+                `;
+            }
+
+            else if (menu === "about") {
+                content = `
+                <div class="card">
+                    <h2>👥 Tim Pengembang</h2>
+
+                    <div class="team">
+                        <div class="member">
+                            <b>Nama 1</b><br>
+                            Peran<br><br>
+                            <!-- GANTI -->
+                            Deskripsi tugas anggota tim.
+                        </div>
+
+                        <div class="member">
+                            <b>Nama 2</b><br>
+                            Peran<br><br>
+                            Deskripsi tugas anggota tim.
+                        </div>
+
+                        <div class="member">
+                            <b>Nama 3</b><br>
+                            Peran<br><br>
+                            Deskripsi tugas anggota tim.
+                        </div>
+
+                        <div class="member">
+                            <b>Nama 4</b><br>
+                            Peran<br><br>
+                            Deskripsi tugas anggota tim.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Presentasi Canva</h2>
+
+                    <p>
+                        Klik tombol di bawah untuk melihat presentasi proyek kami:
+                    </p>
+
+                    <a href="https://canva.link/8hyzfspodb67crg" target="_blank"
+                       style="padding:10px 15px; background:#2a5298; color:white; text-decoration:none; border-radius:8px;">
+                       Buka Canva
+                    </a>
+                </div>
+                `;
+            }
+
+            document.getElementById("content").innerHTML = content;
         }
     </script>
 
