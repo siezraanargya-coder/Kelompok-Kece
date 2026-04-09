@@ -2,13 +2,14 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Proyek Saya</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok 9-Kelompok Kece</title>
 
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            background: linear-gradient(to bottom, #00c853, #b2ff59);
             color: #333;
         }
 
@@ -16,6 +17,7 @@
             text-align: center;
             color: white;
             padding: 20px;
+            font-size: clamp(20px, 5vw, 36px);
         }
 
         nav {
@@ -28,15 +30,15 @@
             margin: 5px;
             border: none;
             background-color: white;
-            color: #2a5298;
+            color: #00c853;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: clamp(12px, 3vw, 16px);
         }
 
         button:hover {
-            background-color: #2a5298;
+            background-color: #00c853;
             color: white;
         }
 
@@ -48,59 +50,59 @@
 
         .card {
             background: #ffffff;
-            padding: 25px;
+            padding: 20px;
             border-radius: 20px;
             margin-bottom: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            animation: fadeIn 0.5s ease;
         }
 
         .card h2 {
-            color: #2a5298;
+            color: #00c853;
+            font-size: clamp(18px, 4vw, 26px);
+        }
+
+        .card p {
+            font-size: clamp(14px, 3.5vw, 18px);
+            line-height: 1.6;
         }
 
         .team {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
 
         .member {
             background: #f4f4f4;
             padding: 15px;
             border-radius: 10px;
+            font-size: clamp(13px, 3vw, 16px);
         }
 
-        iframe {
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(10px);}
-            to {opacity: 1; transform: translateY(0);}
+        /* Responsive untuk HP */
+        @media (max-width: 600px) {
+            .team {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Judul Proyek Kamu</h1>
+    <h1>Pengingat Waktu untuk Minum Air Putih ⏱️</h1>
 
-    <!-- NAV -->
     <nav>
-        <button onclick="showContent('home')">Home</button>
-        <button onclick="showContent('design')">Design</button>
-        <button onclick="showContent('about')">About</button>
+        <button onclick="showContent('Home')">Home</button>
+        <button onclick="showContent('Our Products')">Design</button>
+        <button onclick="showContent('About Us')">About</button>
     </nav>
 
-    <!-- CONTENT -->
     <div class="container" id="content">
 
         <div class="card">
             <h2>Deskripsi Proyek</h2>
             <p>
-                <!-- ISI DI SINI -->
                 Tuliskan deskripsi singkat tentang proyek kamu di sini.
             </p>
         </div>
@@ -112,32 +114,29 @@
 
             let content = "";
 
-            if (menu === "home") {
+            if (menu === "Home") {
                 content = `
                 <div class="card">
                     <h2>Deskripsi Proyek</h2>
                     <p>
-                        <!-- GANTI INI -->
-                        Jelaskan tujuan proyek kamu, latar belakang, atau ide utama di sini.
+                        Jelaskan tujuan proyek kamu di sini.
                     </p>
                 </div>
                 `;
             }
 
-            else if (menu === "design") {
+            else if (menu === "Our Products") {
                 content = `
                 <div class="card">
                     <h2>Konsep & Desain</h2>
                     <p>
-                        <!-- GANTI INI -->
-                        Jelaskan bagaimana desain proyek kamu dibuat, warna yang digunakan, 
-                        serta alasan pemilihan tampilan.
+                        Jelaskan desain dan konsep proyek kamu di sini.
                     </p>
                 </div>
                 `;
             }
 
-            else if (menu === "about") {
+            else if (menu === "About Us") {
                 content = `
                 <div class="card">
                     <h2>👥 Tim Pengembang</h2>
@@ -146,26 +145,13 @@
                         <div class="member">
                             <b>Nama 1</b><br>
                             Peran<br><br>
-                            <!-- GANTI -->
-                            Deskripsi tugas anggota tim.
+                            Deskripsi tugas.
                         </div>
 
                         <div class="member">
                             <b>Nama 2</b><br>
                             Peran<br><br>
-                            Deskripsi tugas anggota tim.
-                        </div>
-
-                        <div class="member">
-                            <b>Nama 3</b><br>
-                            Peran<br><br>
-                            Deskripsi tugas anggota tim.
-                        </div>
-
-                        <div class="member">
-                            <b>Nama 4</b><br>
-                            Peran<br><br>
-                            Deskripsi tugas anggota tim.
+                            Deskripsi tugas.
                         </div>
                     </div>
                 </div>
@@ -173,12 +159,8 @@
                 <div class="card">
                     <h2>Presentasi Canva</h2>
 
-                    <p>
-                        Klik tombol di bawah untuk melihat presentasi proyek kami:
-                    </p>
-
                     <a href="https://canva.link/8hyzfspodb67crg" target="_blank"
-                       style="padding:10px 15px; background:#2a5298; color:white; text-decoration:none; border-radius:8px;">
+                       style="padding:10px 15px; background:#00c853; color:white; text-decoration:none; border-radius:8px; font-size:clamp(14px,3vw,16px);">
                        Buka Canva
                     </a>
                 </div>
