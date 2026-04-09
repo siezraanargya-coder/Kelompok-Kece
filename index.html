@@ -9,8 +9,22 @@
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #00c853, #b2ff59);
-            color: #333;
+
+            /* BACKGROUND GAMBAR */
+            background: url('https://i.postimg.cc/Wb6cZst7/IMG-20260409-WA0012.jpg') no-repeat center center/cover;
+            min-height: 100vh;
+        }
+
+        /* overlay biar teks kebaca */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
         h1 {
@@ -35,6 +49,7 @@
             cursor: pointer;
             font-weight: bold;
             font-size: clamp(12px, 3vw, 16px);
+            transition: 0.3s;
         }
 
         button:hover {
@@ -49,11 +64,14 @@
         }
 
         .card {
-            background: #ffffff;
+            background: rgba(255,255,255,0.95);
             padding: 20px;
             border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
         }
 
         .card h2 {
@@ -61,9 +79,15 @@
             font-size: clamp(18px, 4vw, 26px);
         }
 
-        .card p {
-            font-size: clamp(14px, 3.5vw, 18px);
-            line-height: 1.6;
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 14px;
+            resize: none;
         }
 
         .team {
@@ -76,13 +100,18 @@
             background: #f4f4f4;
             padding: 15px;
             border-radius: 10px;
-            font-size: clamp(13px, 3vw, 16px);
         }
 
-        /* Responsive untuk HP */
         @media (max-width: 600px) {
             .team {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -90,68 +119,83 @@
 
 <body>
 
-    <h1>Pengingat Waktu untuk Minum Air Putih ⏱️</h1>
+    <h1>Pengingat Waktu Untuk Minum Air ⏱️</h1>
 
     <nav>
-        <button onclick="showContent('Home')">Home</button>
-        <button onclick="showContent('Our Products')">Design</button>
-        <button onclick="showContent('About Us')">About</button>
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('design')">Design</button>
+        <button onclick="showContent('about')">About</button>
     </nav>
 
-    <div class="container" id="content">
-
-        <div class="card">
-            <h2>Deskripsi Proyek</h2>
-            <p>
-                Tuliskan deskripsi singkat tentang proyek kamu di sini.
-            </p>
-        </div>
-
-    </div>
+    <div class="container" id="content"></div>
 
     <script>
         function showContent(menu) {
 
             let content = "";
 
-            if (menu === "Home") {
+            if (menu === "home") {
                 content = `
                 <div class="card">
-                    <h2>Deskripsi Proyek</h2>
-                    <p>
-                        Jelaskan tujuan proyek kamu di sini.
-                    </p>
+                    <h2>Deskripsi Utama</h2>
+                    <textarea placeholder="Website ini dibuat sebagai media informasi dan presentasi proyek kami yang berfokus pada pentingnya menjaga kesehatan melalui kebiasaan minum air putih secara teratur. Melalui tampilan yang sederhana dan interaktif, website ini membantu pengguna memahami tujuan proyek serta fitur yang dikembangkan dalam sistem pengingat minum air."></textarea>
+                </div>
+
+                <div class="card">
+                    <h2>Latar Belakang</h2>
+                    <textarea placeholder="Proyek ini dilatarbelakangi oleh kebiasaan masyarakat yang sering lupa untuk minum air putih secara cukup setiap harinya. Kurangnya asupan air dapat berdampak pada kesehatan tubuh, seperti dehidrasi dan menurunnya konsentrasi. Oleh karena itu, kami merancang sebuah solusi berupa sistem pengingat waktu minum air putih yang dapat membantu pengguna membangun kebiasaan hidup sehat."></textarea>
+                </div>
+
+                <div class="card">
+                    <h2>Tujuan</h2>
+                    <textarea placeholder="Tujuan dari proyek ini adalah untuk meningkatkan kesadaran masyarakat akan pentingnya menjaga kebutuhan cairan tubuh. Selain itu, proyek ini juga bertujuan untuk membantu pengguna agar lebih disiplin dalam mengatur waktu minum air melalui sistem pengingat yang sederhana dan mudah digunakan."></textarea>
                 </div>
                 `;
             }
 
-            else if (menu === "Our Products") {
+            else if (menu === "design") {
                 content = `
                 <div class="card">
-                    <h2>Konsep & Desain</h2>
-                    <p>
-                        Jelaskan desain dan konsep proyek kamu di sini.
-                    </p>
+                    <h2>Konsep Desain</h2>
+                    <textarea placeholder="coming soon"></textarea>
+                </div>
+
+                <div class="card">
+                    <h2>Warna & Tampilan</h2>
+                    <textarea placeholder="coming soon"></textarea>
+                </div>
+
+                <div class="card">
+                    <h2>Fitur Website</h2>
+                    <textarea placeholder="coming soon"></textarea>
                 </div>
                 `;
             }
 
-            else if (menu === "About Us") {
+            else if (menu === "about") {
                 content = `
                 <div class="card">
-                    <h2>👥 Tim Pengembang</h2>
+                    <h2>👥 Anggota Kelompok Kami</h2>
 
                     <div class="team">
                         <div class="member">
-                            <b>Nama 1</b><br>
-                            Peran<br><br>
-                            Deskripsi tugas.
+                            <b>Ezra Anargya S.</b><br>Programmer<br><br>
+                            <textarea placeholder="Membuat kode dan sistem untuk menciptakan web serta memperbaiki "bug" yang ada di dalam web ini"></textarea>
                         </div>
 
                         <div class="member">
-                            <b>Nama 2</b><br>
-                            Peran<br><br>
-                            Deskripsi tugas.
+                            <b>Ezra Putra S.</b><br>Graphic Designer<br><br>
+                            <textarea placeholder="Membuat desain virtual untuk web ini"></textarea>
+                        </div>
+
+                        <div class="member">
+                            <b>Jonathan Brandon W.</b><br>Content Writer<br><br>
+                            <textarea placeholder="Membuat berbagai tulisan untuk kebutuhan website, mulai dari artikel, konten informatif, hingga materi promosi. Dan memastikan bahwa konten yang dibuat mudah dipahami, menarik, serta sesuai dengan target pembaca."></textarea>
+                        </div>
+
+                        <div class="member">
+                            <b>Steven Twen V.D.</b><br>Web Developer<br><br>
+                            <textarea placeholder="Merancang, membuat, dan mengembangkan website atau aplikasi. Memastikan juga tampilannya menarik, mudah digunakan, serta fitur-fiturnya dapat berjalan dengan baik dan lancar."></textarea>
                         </div>
                     </div>
                 </div>
@@ -159,8 +203,8 @@
                 <div class="card">
                     <h2>Presentasi Canva</h2>
 
-                    <a href="https://canva.link/8hyzfspodb67crg" target="_blank"
-                       style="padding:10px 15px; background:#00c853; color:white; text-decoration:none; border-radius:8px; font-size:clamp(14px,3vw,16px);">
+                    <a href="https://canva.link/ysfe0bjanx91y4h" target="_blank"
+                       style="padding:10px 15px; background:#00c853; color:white; text-decoration:none; border-radius:8px;">
                        Buka Canva
                     </a>
                 </div>
@@ -169,6 +213,9 @@
 
             document.getElementById("content").innerHTML = content;
         }
+
+        // default load
+        showContent('home');
     </script>
 
 </body>
