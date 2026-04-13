@@ -1,222 +1,221 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelompok 9-Kelompok Kece</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
+<title>AirMate</title>
 
-            /* BACKGROUND GAMBAR */
-            background: url('https://i.postimg.cc/Wb6cZst7/IMG-20260409-WA0012.jpg') no-repeat center center/cover;
-            min-height: 100vh;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #00c853, #b2ff59);
+    color: white;
+}
 
-        /* overlay biar teks kebaca */
-        body::before {
-            content: "";
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
 
-        h1 {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            font-size: clamp(20px, 5vw, 36px);
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
 
-        button {
-            padding: 10px 18px;
-            margin: 5px;
-            border: none;
-            background-color: white;
-            color: #00c853;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: clamp(12px, 3vw, 16px);
-            transition: 0.3s;
-        }
+.menu a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
 
-        button:hover {
-            background-color: #00c853;
-            color: white;
-        }
+/* SECTION */
+.section {
+    text-align: center;
+    padding: 60px 20px;
+}
 
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: auto;
-        }
+.section h1 {
+    font-size: clamp(24px,5vw,40px);
+}
 
-        .card {
-            background: rgba(255,255,255,0.95);
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.5s forwards;
-        }
+.underline {
+    width: 80px;
+    height: 4px;
+    background: white;
+    margin: 10px auto;
+    border-radius: 10px;
+}
 
-        .card h2 {
-            color: #00c853;
-            font-size: clamp(18px, 4vw, 26px);
-        }
+.card {
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 800px;
+}
 
-        textarea {
-            width: 100%;
-            height: 80px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-size: 14px;
-            resize: none;
-        }
+/* TEXT AREA */
+textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
 
-        .team {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+/* TEAM */
+.team {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-        .member {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 10px;
-        }
+.member {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-        @media (max-width: 600px) {
-            .team {
-                grid-template-columns: 1fr;
-            }
-        }
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #00c853;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 15px;
+}
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:600px){
+    .team {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Pengingat Waktu Untuk Minum Air ⏱️</h1>
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <img src="https://github.com/siezraanargya-coder/Kelompok-Kece/blob/3fbc7b85e7bebad434754ac184cc7fd19b6cdaa0/IMG-20260409-WA0012.jpg">
+        AirMate
+    </div>
 
-    <nav>
-        <button onclick="showContent('home')">Home</button>
-        <button onclick="showContent('design')">Design</button>
-        <button onclick="showContent('about')">About</button>
-    </nav>
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#design">Design</a>
+    </div>
+</nav>
 
-    <div class="container" id="content"></div>
+<!-- HOME -->
+<section id="home" class="section">
+    <h1>Selamat Datang di AirMate 💧</h1>
+    <div class="underline"></div>
 
-    <script>
-        function showContent(menu) {
+    <div class="card">
+        <textarea placeholder="Website ini dibuat sebagai media informasi dan presentasi proyek kami yang berfokus pada pentingnya menjaga kesehatan melalui kebiasaan minum air putih secara teratur. Melalui tampilan yang sederhana dan interaktif, website ini membantu pengguna memahami tujuan proyek serta fitur yang dikembangkan dalam sistem pengingat minum air."></textarea>
+    </div>
 
-            let content = "";
+    <div class="card">
+        <textarea placeholder="Proyek ini dilatarbelakangi oleh kebiasaan masyarakat yang sering lupa untuk minum air putih secara cukup setiap harinya. Kurangnya asupan air dapat berdampak pada kesehatan tubuh, seperti dehidrasi dan menurunnya konsentrasi. Oleh karena itu, kami merancang sebuah solusi berupa sistem pengingat waktu minum air putih yang dapat membantu pengguna membangun kebiasaan hidup sehat."></textarea>
+    </div>
 
-            if (menu === "home") {
-                content = `
-                <div class="card">
-                    <h2>Deskripsi Utama</h2>
-                    <textarea placeholder="Website ini dibuat sebagai media informasi dan presentasi proyek kami yang berfokus pada pentingnya menjaga kesehatan melalui kebiasaan minum air putih secara teratur. Melalui tampilan yang sederhana dan interaktif, website ini membantu pengguna memahami tujuan proyek serta fitur yang dikembangkan dalam sistem pengingat minum air."></textarea>
-                </div>
+    <div class="card">
+        <textarea placeholder="Tujuan dari proyek ini adalah untuk meningkatkan kesadaran masyarakat akan pentingnya menjaga kebutuhan cairan tubuh. Selain itu, proyek ini juga bertujuan untuk membantu pengguna agar lebih disiplin dalam mengatur waktu minum air melalui sistem pengingat yang sederhana dan mudah digunakan."></textarea>
+    </div>
+</section>
 
-                <div class="card">
-                    <h2>Latar Belakang</h2>
-                    <textarea placeholder="Proyek ini dilatarbelakangi oleh kebiasaan masyarakat yang sering lupa untuk minum air putih secara cukup setiap harinya. Kurangnya asupan air dapat berdampak pada kesehatan tubuh, seperti dehidrasi dan menurunnya konsentrasi. Oleh karena itu, kami merancang sebuah solusi berupa sistem pengingat waktu minum air putih yang dapat membantu pengguna membangun kebiasaan hidup sehat."></textarea>
-                </div>
+<!-- ABOUT -->
+<section id="about" class="section">
+    <h1>Tentang Kami</h1>
+    <div class="underline"></div>
 
-                <div class="card">
-                    <h2>Tujuan</h2>
-                    <textarea placeholder="Tujuan dari proyek ini adalah untuk meningkatkan kesadaran masyarakat akan pentingnya menjaga kebutuhan cairan tubuh. Selain itu, proyek ini juga bertujuan untuk membantu pengguna agar lebih disiplin dalam mengatur waktu minum air melalui sistem pengingat yang sederhana dan mudah digunakan."></textarea>
-                </div>
-                `;
-            }
+    <div class="card">
+        <textarea placeholder="Ini adalah anggota kelompok kami (Kelompok 9)"></textarea>
+    </div>
 
-            else if (menu === "design") {
-                content = `
-                <div class="card">
-                    <h2>Konsep Desain</h2>
-                    <textarea placeholder="coming soon"></textarea>
-                </div>
+    <div class="card">
+        <h2>👥 Anggota Kelompok</h2>
 
-                <div class="card">
-                    <h2>Warna & Tampilan</h2>
-                    <textarea placeholder="coming soon"></textarea>
-                </div>
+        <div class="team">
+            <div class="member">
+                <b>Ezra Anargya Sipayung</b><br>Programmer
+                <textarea placeholder="Bertugas sebagai programmer dengan membuat kode dan sistem untuk menciptakan web. Selain itu, saya juga memperbaiki "bug" yang ada di dalam web."></textarea>
+            </div>
 
-                <div class="card">
-                    <h2>Fitur Website</h2>
-                    <textarea placeholder="coming soon"></textarea>
-                </div>
-                `;
-            }
+            <div class="member">
+                <b>Ezra Putra Sihaloho</b><br>Graphic Designer
+                <textarea placeholder="Mendesain tampilan aplikasi agar menarik dan mudah digunakan. Tujuanku adalah menciptakan desain yang simpel, enak dilihat, dan membantu pengguna memahami fitur aplikasi dengan lebih mudah."></textarea>
+            </div>
 
-            else if (menu === "about") {
-                content = `
-                <div class="card">
-                    <h2>👥 Anggota Kelompok Kami</h2>
+            <div class="member">
+                <b>Jonathan Brandon Warokka</b><br>Content Writer
+                <textarea placeholder="Membuat berbagai tulisan untuk kebutuhan website, mulai dari artikel, konten informatif, hingga materi promosi. Memastikan jug konten yang dibuat mudah dipahami, menarik, dan sesuai dengan target pembaca.
+                    "></textarea>
+            </div>
 
-                    <div class="team">
-                        <div class="member">
-                            <b>Ezra Anargya S.</b><br>Programmer<br><br>
-                            <textarea placeholder="Membuat kode dan sistem untuk menciptakan web serta memperbaiki "bug" yang ada di dalam web ini"></textarea>
-                        </div>
+            <div class="member">
+                <b>Steven Twen Van Dez</b><br>Web Developer
+                <textarea placeholder="Bertugas untuk merancang, membuat, dan mengembangkan website atau aplikasi. Dan memastikan tampilannya menarik, mudah digunakan, serta fitur-fiturnya dapat berjalan dengan baik dan lancar."></textarea>
+            </div>
+        </div>
+    </div>
 
-                        <div class="member">
-                            <b>Ezra Putra S.</b><br>Graphic Designer<br><br>
-                            <textarea placeholder="Membuat desain virtual untuk web ini"></textarea>
-                        </div>
+    <!-- CANVA -->
+    <div class="card">
+        <h2>Presentasi Canva</h2>
 
-                        <div class="member">
-                            <b>Jonathan Brandon W.</b><br>Content Writer<br><br>
-                            <textarea placeholder="Membuat berbagai tulisan untuk kebutuhan website, mulai dari artikel, konten informatif, hingga materi promosi. Dan memastikan bahwa konten yang dibuat mudah dipahami, menarik, serta sesuai dengan target pembaca."></textarea>
-                        </div>
+        <div style="position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; margin-top: 20px;">
+            <iframe 
+                src="https://www.canva.com/design/DAHGXPyfuyA/ug14rJutjm4QVF5EamGv2A/view?embed"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
 
-                        <div class="member">
-                            <b>Steven Twen V.D.</b><br>Web Developer<br><br>
-                            <textarea placeholder="Merancang, membuat, dan mengembangkan website atau aplikasi. Memastikan juga tampilannya menarik, mudah digunakan, serta fitur-fiturnya dapat berjalan dengan baik dan lancar."></textarea>
-                        </div>
-                    </div>
-                </div>
+        <div style="text-align:center; margin-top:15px;">
+            <a href="https://www.canva.com/design/DAHGXPyfuyA/ug14rJutjm4QVF5EamGv2A/view"
+               target="_blank"
+               class="btn">
+               Buka Canva
+            </a>
+        </div>
+    </div>
+</section>
 
-                <div class="card">
-                    <h2>Presentasi Canva</h2>
+<!-- DESIGN -->
+<section id="design" class="section">
+    <h1>Desain & Fitur</h1>
+    <div class="underline"></div>
 
-                    <a href="https://canva.link/ysfe0bjanx91y4h" target="_blank"
-                       style="padding:10px 15px; background:#00c853; color:white; text-decoration:none; border-radius:8px;">
-                       Buka Canva
-                    </a>
-                </div>
-                `;
-            }
+    <div class="card">
+        <textarea placeholder="AirMate dirancang sebagai website yang simpel, bersih, dan mudah digunakan oleh semua kalangan, khususnya remaja. Desainnya menggunakan warna-warna segar seperti biru dan putih yang identik dengan air dan kesegaran, serta tampilan yang minimalis agar pengguna tidak merasa bingung saat menggunakannya. Layout dibuat rapi dengan ikon dan ilustrasi yang menarik supaya terlihat modern dan nyaman dilihat dalam waktu lama."></textarea>
+    </div>
 
-            document.getElementById("content").innerHTML = content;
-        }
-
-        // default load
-        showContent('home');
-    </script>
+    <div class="card">
+        <textarea placeholder="Fitur utama AirMate berfokus pada pengingat waktu minum air secara berkala. Pengguna mendapatkan notifikasi dalam jangka waktu tertentu untuk kembali minum air putih. Dengan konsep ini, AirMate tidak hanya menjadi pengingat, tetapi juga teman digital yang membantu membangun kebiasaan hidup sehat."></textarea>
+    </div>
+</section>
 
 </body>
 </html>
