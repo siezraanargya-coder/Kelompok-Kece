@@ -108,6 +108,73 @@ textarea {
         grid-template-columns: 1fr;
     }
 }
+
+.finance-card{
+    background:white;
+    color:#333;
+    padding:20px;
+    border-radius:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.finance-card input,
+.finance-card select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:10px;
+}
+
+.finance-card button{
+    background:#00c853;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.finance-card table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.finance-card th,
+.finance-card td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+.finance-card th{
+    background:#00c853;
+    color:white;
+}
+
+.summary-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.summary-item{
+    background:#f4f4f4;
+    color:#333;
+    padding:15px;
+    border-radius:12px;
+}
+
+.delete-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+} 
 </style>
 </head>
 
@@ -124,6 +191,7 @@ textarea {
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#design">Design</a>
+        <a href="#keuangan">Keuangan</a>
     </div>
 </nav>
 
@@ -216,6 +284,168 @@ textarea {
         <textarea placeholder="Fitur utama website ini berfokus pada pencatatan dan pengelolaan pengeluaran harian siswa. Pengguna dapat menambahkan data pengeluaran, melihat riwayat transaksi, serta memantau total pengeluaran yang telah dilakukan. Dengan adanya fitur tersebut, siswa dapat mengetahui pola penggunaan uang saku mereka sehingga lebih mudah mengatur anggaran dan membiasakan diri untuk hidup hemat serta bertanggung jawab dalam mengelola keuangan pribadi."></textarea>
     </div>
 </section>
+
+<section id="keuangan" class="section">
+    <h1>Pencatat Pengeluaran Harian</h1>
+    <div class="underline"></div>
+
+    <div class="finance-card">
+
+        <h2>Tambah Transaksi</h2>
+
+        <input type="date" id="tanggal">
+
+        <select id="jenis">
+            <option value="masuk">Pemasukan</option>
+            <option value="keluar">Pengeluaran</option>
+        </select>
+
+        <input type="text" id="kategori" placeholder="Kategori">
+
+        <input type="number" id="nominal" placeholder="Nominal">
+
+        <button onclick="tambahTransaksi()">
+            Tambah Transaksi
+        </button>
+
+        <div class="summary-box">
+            <div class="summary-item">
+                <h3>Total Pemasukan</h3>
+                <p id="totalMasuk">Rp0</p>
+            </div>
+
+            <div class="summary-item">
+                <h3>Total Pengeluaran</h3>
+                <p id="totalKeluar">Rp0</p>
+            </div>
+
+            <div class="summary-item">
+                <h3>Sisa Saldo</h3>
+                <p id="saldo">Rp0</p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Jenis</th>
+                    <th>Kategori</th>
+                    <th>Nominal</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody id="tabelData"></tbody>
+        </table>
+
+    </div>
+</section>
+
+<script>
+
+let dataTransaksi =
+JSON.parse(localStorage.getItem("transaksi")) || [];
+
+function formatRupiah(angka){
+    return "Rp" + angka.toLocaleString("id-ID");
+}
+
+function simpanData(){
+    localStorage.setItem(
+        "transaksi",
+        JSON.stringify(dataTransaksi)
+    );
+}
+
+function tambahTransaksi(){
+
+    let tanggal =
+    document.getElementById("tanggal").value;
+
+    let jenis =
+    document.getElementById("jenis").value;
+
+    let kategori =
+    document.getElementById("kategori").value;
+
+    let nominal =
+    parseInt(document.getElementById("nominal").value);
+
+    if(!tanggal || !kategori || !nominal){
+        alert("Lengkapi data terlebih dahulu!");
+        return;
+    }
+
+    dataTransaksi.push({
+        tanggal,
+        jenis,
+        kategori,
+        nominal
+    });
+
+    simpanData();
+    tampilkanData();
+
+    document.getElementById("kategori").value = "";
+    document.getElementById("nominal").value = "";
+}
+
+function hapusData(index){
+
+    dataTransaksi.splice(index,1);
+
+    simpanData();
+    tampilkanData();
+}
+
+function tampilkanData(){
+
+    let tbody =
+    document.getElementById("tabelData");
+
+    tbody.innerHTML = "";
+
+    let totalMasuk = 0;
+    let totalKeluar = 0;
+
+    dataTransaksi.forEach((item,index)=>{
+
+        if(item.jenis === "masuk"){
+            totalMasuk += item.nominal;
+        }else{
+            totalKeluar += item.nominal;
+        }
+
+        tbody.innerHTML += `
+        <tr>
+            <td>${item.tanggal}</td>
+            <td>${item.jenis}</td>
+            <td>${item.kategori}</td>
+            <td>${formatRupiah(item.nominal)}</td>
+            <td>
+                <button class="delete-btn"
+                onclick="hapusData(${index})">
+                Hapus
+                </button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("totalMasuk")
+    .innerText = formatRupiah(totalMasuk);
+
+    document.getElementById("totalKeluar")
+    .innerText = formatRupiah(totalKeluar);
+
+    document.getElementById("saldo")
+    .innerText =
+    formatRupiah(totalMasuk-totalKeluar);
+}
+
+tampilkanData();
+
+</script>
 
 </body>
 </html>
